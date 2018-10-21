@@ -84,8 +84,12 @@ def run_generator(num, x1, x2, fig_name='sample.png'):
         _, ax = plt.subplots(10, 10, sharex=True, sharey=True)
         for i in range(10):
             for j in range(10):
-                ax[i][j].imshow(imgs[i * 10 + j], 'gray')
-                ax[i][j].set_axis_off()
+                ax[i][j].plot(imgs[i * 10 + j, :, 0], color='b', linewidth=0.25)
+                # Turn off tick labels only
+                # ax[i][j].set_axis_off()
+                ax[i][j].set_xticks([])
+                ax[i][j].set_yticks([])
+
         plt.savefig('asset/train/' + fig_name, dpi=600)
         tf.sg_info('Sample image saved to "asset/train/%s"' % fig_name)
         plt.close()
